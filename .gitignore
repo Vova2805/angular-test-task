@@ -54,3 +54,8 @@ sftp-config.json
 
 # KDE directory preferences
 .directory
+bower_components/
+!.gitkeep
+node_modules/
+tmp
+.idea
