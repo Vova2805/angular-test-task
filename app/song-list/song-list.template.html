@@ -1,0 +1,36 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <p>
+                Search:
+                <input ng-model="$ctrl.query"/>
+            </p>
+
+            <p>
+                Sort by:
+                <select ng-model="$ctrl.orderProp">
+                    <option value="title">Title</option>
+                    <option value="artist">Artist</option>
+                    <option value="country">Country</option>
+                    <option value="company">Company</option>
+                    <option value="price">Price</option>
+                    <option value="year">Year</option>
+                </select>
+            </p>
+
+        </div>
+        <div class="col-md-10">
+            <ul class="songs">
+                <li ng-repeat="(key, song) in $ctrl.songs | filter:$ctrl.query | orderBy:$ctrl.orderProp"
+                    class="thumbnail song-list-item">
+                    <a href="#!/songs/{{song.id}}" class="thumb">
+                        <img ng-src="{{$ctrl.getRightImageURL(song.imageUrl)}}" alt="{{song.title}}"/>
+                    </a>
+                    <a href="#!/songs/{{song.id}}">{{song.title}}</a>
+                    <p>{{song.artist}}</p>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
