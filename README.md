@@ -103,8 +103,8 @@ There are a few services that you're supposed to use in order to create your app
 - Url: `/albums/all`
 - HTTP Method: `GET`
 
-##Result
+### Result
 
-<img width="1440" alt="screen shot 2017-05-07 at 4 11 18 pm" src="https://cloud.githubusercontent.com/assets/11577478/25781244/db363e86-333f-11e7-9a3d-857e909e5a0b.png">
 <img width="1440" alt="screen shot 2017-05-07 at 4 11 03 pm" src="https://cloud.githubusercontent.com/assets/11577478/25781243/db36458e-333f-11e7-8491-ebd73d1ae179.png">
+<img width="1440" alt="screen shot 2017-05-07 at 4 11 18 pm" src="https://cloud.githubusercontent.com/assets/11577478/25781244/db363e86-333f-11e7-9a3d-857e909e5a0b.png">
 
