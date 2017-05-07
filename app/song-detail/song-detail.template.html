@@ -1,34 +1,60 @@
-<div class="song-images">
-  <img ng-src="{{$ctrl.song.logoUrl}}" class="song" alt="Song image"/>
-</div>
+<div class="container-fluid details">
+    <div class="page-header">
+        <h1>Title: {{$ctrl.song.title}} <small> Id : {{$ctrl.song.id}}</small></h1>
+    </div>
 
-<div>
-  <form novalidate>
-    <label for="imageUrl">URL</label>
-    <input type="text" id="imageUrl" ng-model="$ctrl.song.logoUrl"><br>
+    <div class="row">
+        <div class="card card-inverse col-3 col-sm-6 col-md-4 col-lg-3">
+            <img class="card-img" src="{{$ctrl.song.logoUrl}}" alt="Image for : {{$ctrl.song.title}}">
+        </div>
+        <div class="card card-inverse col-9 col-sm-6 col-md-8 col-lg-9">
 
-    <label for="title">Title</label>
-    <input type="text" id="title" ng-model="$ctrl.song.title"><br>
+            <div class="input-group">
+                <span class="input-group-addon">URL</span>
+                <input type="text" class="form-control" id="imageUrl" placeholder="Image URL"
+                       ng-model="$ctrl.song.logoUrl" aria-describedby="basic-addon1">
+            </div>
 
-    <label for="artist">Artist</label>
-    <input type="text" id="artist" ng-model="$ctrl.song.artist"><br>
+            <div class="input-group">
+                <span class="input-group-addon">Title</span>
+                <input type="text" class="form-control" id="title" ng-model="$ctrl.song.title"
+                       aria-describedby="basic-addon1">
+            </div>
 
-    <label for="country">Country</label>
-    <input type="text" id="country" ng-model="$ctrl.song.country"><br>
+            <div class="input-group">
+                <span class="input-group-addon">Artist</span>
+                <input type="text" class="form-control" id="artist" ng-model="$ctrl.song.artist"
+                       aria-describedby="basic-addon1">
+            </div>
 
-    <label for="company">Company</label>
-    <input type="text" id="company" ng-model="$ctrl.song.company"><br>
+            <div class="input-group">
+                <span class="input-group-addon">Country</span>
+                <input type="text" class="form-control" id="country" ng-model="$ctrl.song.country"
+                       aria-describedby="basic-addon1">
+            </div>
 
-    <label for="price">Price</label>
-    <input type="number" id="price" ng-model="$ctrl.song.price" step="0.1"><br>
+            <div class="input-group">
+                <span class="input-group-addon">Company</span>
+                <input type="text" class="form-control" id="company" ng-model="$ctrl.song.company"
+                       aria-describedby="basic-addon1">
+            </div>
 
-    <label for="year">Year</label>
-    <input type="number" id="year" ng-model="$ctrl.song.year"><br>
+            <div class="input-group">
+                <span class="input-group-addon">Price</span>
+                <input type="text" class="form-control" id="price" ng-model="$ctrl.song.price"
+                       aria-describedby="basic-addon1">
+            </div>
 
-    <button ng-click="reset()">Reset</button>
+            <div class="input-group">
+                <span class="input-group-addon">Year</span>
+                <input type="text" class="form-control" id="year" ng-model="$ctrl.song.year"
+                       aria-describedby="basic-addon1">
+            </div>
+        </div>
+    </div>
 
-    <button ng-click="update($ctrl.song)">UPDATE</button>
-  </form>
-  <p>form = {{$ctrl.song}}</p>
-  <p>master = {{$ctrl.master}}</p>
+    <div class="row">
+        <button type="button" ng-click="update($ctrl.song)" class="btn btn-primary">UPDATE</button>
+        <button type="button" ng-click="reset()" class="btn">Reset</button>
+    </div>
 </div>

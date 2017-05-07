@@ -1,17 +1,20 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-2">
-            <p>
-                Search:
-                <input ng-model="$ctrl.query"/>
-            </p>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">MusicList</a>
+        </div>
 
-            <label> Initial count in db {{$ctrl.initCount}}</label>
-            <label> Current count in db {{$ctrl.count}}</label>
+        <p class="navbar-text"> Filter:</p>
 
-            <p>
-                Sort by:
-                <select ng-model="$ctrl.orderProp">
+        <form class="navbar-form navbar-left border-right">
+            <div class="form-group">
+                <input type="text" class="form-control"  ng-model="$ctrl.query" placeholder="Search">
+            </div>
+        </form>
+        <p class="navbar-text"> Sort by:</p>
+        <form class="navbar-form navbar-left border-right">
+            <div class="form-group">
+                <select  class="form-control" ng-model="$ctrl.orderProp">
                     <option value="title">Title</option>
                     <option value="artist">Artist</option>
                     <option value="country">Country</option>
@@ -19,29 +22,38 @@
                     <option value="price">Price</option>
                     <option value="year">Year</option>
                 </select>
-            </p>
+            </div>
+        </form>
+        <p class="navbar-text border-right">Initial count in db {{$ctrl.initCount}}</p>
+        <p class="navbar-text border-right">Current count in db {{$ctrl.count}}</p>
 
-        </div>
-        <div class="col-md-10">
-            <ul class="songs">
-                <li ng-repeat="song in $ctrl.songs | filter:$ctrl.query | orderBy:$ctrl.orderProp"
-                    class="thumbnail song-list-item">
-                    <a href="#!/songs/{{song.id}}" class="thumb">
-                        <img ng-src="{{$ctrl.getRightImageURL(song.logoUrl)}}" alt="{{song.title}}"/>
-                    </a>
-                    <a href="#!/songs/{{song.id}}">{{song.title}}</a>
-                    <p>{{song.id}}</p>
-                    <p>{{song.artist}}</p>
-                    <p>{{song.artist}}</p>
-                    <p>{{song.country}}</p>
-                    <p>{{song.company}}</p>
-                    <p>{{song.price}}</p>
-                    <p>{{song.year}}</p>
+    </div>
+</nav>
 
-                    <button ng-click="delete(song.id)">DELETE</button>
-                </li>
-            </ul>
+<div class="container-fluid content">
+    <div class="row">
+        <div class="card-group">
+            <div class="card col-3 col-sm-6 col-md-4 col-lg-3" ng-repeat="song in $ctrl.songs | filter:$ctrl.query | orderBy:$ctrl.orderProp">
+                <a href="#!/songs/{{song.id}}" class="thumb">
+                    <img class="card-img-top" src="{{$ctrl.getRightImageURL(song.logoUrl)}}" alt="{{song.title}}">
+                </a>
 
+                <div class="card-block">
+                    <h4 class="card-title">Title: {{song.title}}</h4>
+                    <p class="card-text"> Artist: {{song.artist}}</p>
+                    <p class="card-text"> Country: {{song.country}}</p>
+                    <p class="card-text"> Company: {{song.company}}</p>
+                    <p class="card-text"> Price: {{song.price}}</p>
+                    <p class="card-text"> Year: {{song.year}}</p>
+                    <div class="card-block">
+                        <a href="#!/songs/{{song.id}}"  class="btn btn-primary">Details</a>
+                        <a href="#"  ng-click="delete(song.id)" class="card-link danger delete">Delete</a>
+                    </div>
+                    <p class="card-text">
+                        <small class="text-muted">id : {{song.id}}</small>
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
