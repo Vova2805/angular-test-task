@@ -10,16 +10,51 @@
 
                     var self = this;
                     self.songs = [];
+                    self.count = self.songs.length;
+                    self.initCount = self.songs.length;
 
-                    self.getRightImageURL = getRightImageURL;
+                    var updateList = function updateList() { // just to show that I know about different scopes
+                        $http.get('/albums/all')
+                            .then(function (response) {
+                                self.songs = $.map(response.data, function (value, index) {
+                                    return angular.copy(response.data[index]);
+                                });
+                                self.count = self.songs.length;
+                            })
+                            .catch(function (err) {
+                                console.log(err);
+                            });
+                    };
 
-                    this.orderProp = 'title';
 
-                    $http.get('/albums/all').then(function (response) {
-                        self.songs = $.map(response.data, function (value, index) {
-                            return [value];
-                        });
-                    });
+                    var updateCount = function updateCount() {
+                        $http.get('/albums/count')
+                            .then(function (response) {
+                                self.initCount = response.data['value'];
+                            })
+                            .catch(function (err) {
+                                console.log(err);
+                            });
+                    };
+
+                    self.getRightImageURL = getRightImageURL;  // controller's scope
+
+                    $scope.update = updateList;
+
+                    $scope.delete = function (id) {
+                        $http.delete('/albums/delete/' + id)
+                            .then(function (response) {
+                                alert('deleted');
+                                updateList();
+                            })
+                            .catch(function (err) {
+                                console.log(err);
+                                alert('failed');
+                            });
+                    };
+
+                    updateList();
+                    updateCount();
                 }
             ]
         });

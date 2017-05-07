@@ -6,6 +6,9 @@
                 <input ng-model="$ctrl.query"/>
             </p>
 
+            <label> Initial count in db {{$ctrl.initCount}}</label>
+            <label> Current count in db {{$ctrl.count}}</label>
+
             <p>
                 Sort by:
                 <select ng-model="$ctrl.orderProp">
@@ -21,13 +24,21 @@
         </div>
         <div class="col-md-10">
             <ul class="songs">
-                <li ng-repeat="(key, song) in $ctrl.songs | filter:$ctrl.query | orderBy:$ctrl.orderProp"
+                <li ng-repeat="song in $ctrl.songs | filter:$ctrl.query | orderBy:$ctrl.orderProp"
                     class="thumbnail song-list-item">
                     <a href="#!/songs/{{song.id}}" class="thumb">
                         <img ng-src="{{$ctrl.getRightImageURL(song.logoUrl)}}" alt="{{song.title}}"/>
                     </a>
                     <a href="#!/songs/{{song.id}}">{{song.title}}</a>
+                    <p>{{song.id}}</p>
                     <p>{{song.artist}}</p>
+                    <p>{{song.artist}}</p>
+                    <p>{{song.country}}</p>
+                    <p>{{song.company}}</p>
+                    <p>{{song.price}}</p>
+                    <p>{{song.year}}</p>
+
+                    <button ng-click="delete(song.id)">DELETE</button>
                 </li>
             </ul>
 

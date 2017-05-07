@@ -65,24 +65,10 @@ module.exports = function () {
 				save(undefined, req, res);
 			});
 			router.post('/update/:id', function (req, res) {
-				console.log('update');
 				save(req.params.id, req, res);
 			});
 
 			function save(id, req, res) {
-				console.log('update1');
-				// try {
-
-				// 	validate(req);
-
-				// } catch (e) {
-				// 	res.status(400).send(e.message).end();
-				// 	return;
-				// }
-
-				// id = v.isNumeric(id + '') ? id : length;
-
-				// console.log('looking for ' + id);
 				var _album = albums[id];
 				var _new = false;
 
