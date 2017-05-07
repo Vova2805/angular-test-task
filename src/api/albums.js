@@ -1,4 +1,4 @@
-module.exports = function() {
+module.exports = function () {
 
 	var express = require('express'),
 		fs = require('fs'),
@@ -17,21 +17,21 @@ module.exports = function() {
 		length = 0;
 
 	fs.readFile(path.join(__dirname, '../resources/data/400-id.js'),
-		function(err, data) {
+		function (err, data) {
 			if (err) throw err;
 
 			albums = JSON.parse(data.toString());
 			length = Object.keys(albums).length;
 
-			router.get('/', function(req, res) {
+			router.get('/', function (req, res) {
 				res.send('Albums home page');
 			});
 
-			router.get('/all', function(req, res) {
+			router.get('/all', function (req, res) {
 				res.send(albums);
 			});
 
-			router.get('/get/:id', function(req, res) {
+			router.get('/get/:id', function (req, res) {
 				var id = req.params.id;
 
 				if (typeof id === 'undefined' || typeof albums[id] === 'undefined') {
@@ -61,25 +61,26 @@ module.exports = function() {
 				}
 			}
 
-			router.post('/add', function(req, res) {
+			router.post('/add', function (req, res) {
 				save(undefined, req, res);
 			});
-			router.post('/update/:id', function(req, res) {
+			router.post('/update/:id', function (req, res) {
+				console.log('update');
 				save(req.params.id, req, res);
 			});
 
 			function save(id, req, res) {
+				console.log('update1');
+				// try {
 
-				try {
+				// 	validate(req);
 
-					validate(req);
+				// } catch (e) {
+				// 	res.status(400).send(e.message).end();
+				// 	return;
+				// }
 
-				} catch (e) {
-					res.status(400).send(e.message).end();
-					return;
-				}
-
-				id = v.isNumeric(id + '') ? id : length;
+				// id = v.isNumeric(id + '') ? id : length;
 
 				// console.log('looking for ' + id);
 				var _album = albums[id];
@@ -110,7 +111,7 @@ module.exports = function() {
 				res.send(_album).end();
 			}
 
-			router.delete('/delete/:id', function(req, res) {
+			router.delete('/delete/:id', function (req, res) {
 
 				var id = req.params.id;
 
@@ -126,13 +127,13 @@ module.exports = function() {
 				}
 			});
 
-			router.get('/count', function(req, res) {
+			router.get('/count', function (req, res) {
 				res.send({
 					value: Object.keys(albums).length
 				}).end();
 			});
 
-			router.get('/get/:id', function(req, res) {
+			router.get('/get/:id', function (req, res) {
 				var id = req.params.id;
 
 				if (typeof id === 'undefined' || typeof albums[id] === 'undefined') {

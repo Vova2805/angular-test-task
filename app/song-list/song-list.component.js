@@ -5,7 +5,7 @@
     angular.module('songList')
         .component('songList', {
             templateUrl: 'song-list/song-list.template.html',
-            controller: ['$scope','$http',
+            controller: ['$scope', '$http',
                 function SongListController($scope, $http) {
 
                     var self = this;

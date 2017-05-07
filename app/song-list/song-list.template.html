@@ -24,7 +24,7 @@
                 <li ng-repeat="(key, song) in $ctrl.songs | filter:$ctrl.query | orderBy:$ctrl.orderProp"
                     class="thumbnail song-list-item">
                     <a href="#!/songs/{{song.id}}" class="thumb">
-                        <img ng-src="{{$ctrl.getRightImageURL(song.imageUrl)}}" alt="{{song.title}}"/>
+                        <img ng-src="{{$ctrl.getRightImageURL(song.logoUrl)}}" alt="{{song.title}}"/>
                     </a>
                     <a href="#!/songs/{{song.id}}">{{song.title}}</a>
                     <p>{{song.artist}}</p>

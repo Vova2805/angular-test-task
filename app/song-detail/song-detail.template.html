@@ -1,6 +1,34 @@
-<a href="#!/songs/{{song.id}}" class="thumb">
-  <img ng-src="img/song_default.png" alt="{{song.title}}"/>
-</a>
+<div class="song-images">
+  <img ng-src="{{$ctrl.song.logoUrl}}" class="song" alt="Song image"/>
+</div>
 
-<a href="#!/songs/{{song.id}}">{{song.title}}</a>
-<p>{{song.artist}}</p>
+<div>
+  <form novalidate>
+    <label for="imageUrl">URL</label>
+    <input type="text" id="imageUrl" ng-model="$ctrl.song.logoUrl"><br>
+
+    <label for="title">Title</label>
+    <input type="text" id="title" ng-model="$ctrl.song.title"><br>
+
+    <label for="artist">Artist</label>
+    <input type="text" id="artist" ng-model="$ctrl.song.artist"><br>
+
+    <label for="country">Country</label>
+    <input type="text" id="country" ng-model="$ctrl.song.country"><br>
+
+    <label for="company">Company</label>
+    <input type="text" id="company" ng-model="$ctrl.song.company"><br>
+
+    <label for="price">Price</label>
+    <input type="number" id="price" ng-model="$ctrl.song.price" step="0.1"><br>
+
+    <label for="year">Year</label>
+    <input type="number" id="year" ng-model="$ctrl.song.year"><br>
+
+    <button ng-click="reset()">Reset</button>
+
+    <button ng-click="update($ctrl.song)">UPDATE</button>
+  </form>
+  <p>form = {{$ctrl.song}}</p>
+  <p>master = {{$ctrl.master}}</p>
+</div>
