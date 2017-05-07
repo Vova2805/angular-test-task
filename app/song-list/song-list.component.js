@@ -10,8 +10,8 @@
 
                     var self = this;
                     self.songs = [];
-                    self.count = self.songs.length;
-                    self.initCount = self.songs.length;
+                    self.countAll = 0;
+                    self.initCount = 0;
 
                     var updateList = function updateList() { // just to show that I know about different scopes
                         $http.get('/albums/all')
@@ -19,7 +19,7 @@
                                 self.songs = $.map(response.data, function (value, index) {
                                     return angular.copy(response.data[index]);
                                 });
-                                self.count = self.songs.length;
+                                self.countAll = self.songs.length;
                             })
                             .catch(function (err) {
                                 console.log('err', err);
@@ -50,8 +50,7 @@
                     $scope.delete = function (id) {
                         $http.delete('/albums/delete/' + id)
                             .then(function (response) {
-                                alert('deleted');
-                                updateList();
+                                alert('Deleted');
                             })
                             .catch(function (err) {
                                 console.log(err);
