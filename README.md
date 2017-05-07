@@ -1,11 +1,12 @@
 # FrontEnd developer Test
+# Ready project by Volodymyr Dudas
 
 ## Required Technologies
  - [AngularJS](https://angularjs.org/)
  - [Twitter Bootstrap](http://getbootstrap.com/)
- - [Underscore.js](http://underscorejs.org/)
  - [Karma](https://karma-runner.github.io/)
  - [Jasmine](https://jasmine.github.io/)
+ - [Protractor](http://www.protractortest.org)
 
 ## Description
 
@@ -24,8 +25,6 @@ Fork the project [Angular JS Exam project](https://github.com/thiagoh/angular-js
 - Your project must be a for of [Angular JS Exam project](https://github.com/thiagoh/angular-js-exam-project)
 - You will notice that none of the albums has a logo set. Your CRUD must allow the user to set a logo URL for each album, and this logo should be visible along with the album information (on the screen). Our services are ready to receive a parameter `logoUrl` so all you have to do is using the current REST services to update the albums.
 - The page must be responsive
-- All the static data such as JS, CSS and Image Files must be inside `/html` directory. Each one inside your own directory.
-- **You're not allowed to use jQuery (!important)** (Because of the Bootstrap dependency on jQuery you can have jQuery on your codebase but despite of Bootstrap related scripts you must not use jQuery)
 - You cannot create or edit the existing REST Services
 - You must create tests with Jasmine + Karma
 - Your code must be pushed to a repository in your Github account and the url must be provided to us so we can clone and test your project
@@ -35,15 +34,21 @@ Fork the project [Angular JS Exam project](https://github.com/thiagoh/angular-js
 ## How to run
 
 ```
-npm install
+sudo npm install
+sudo bower install --allow-root
 grunt start
-```
-## Instructions to submit your work
 
-- Commit and push all you work to your repository
-- Download the ZIP of your project from your Git repository (download green button of github project page)
-- Send to my e-mail your ZIP file and your project's github link
-- Send details or explanations about your project in a INSTRUCTIONS.md file that is inside the root directory of your project
+go to http://localhost:8000
+```
+
+## Got an error with busy port?
+
+```
+sudo lsof -i -P or lsor -i :8000
+sudo kill -9 PID
+
+run again
+```
 
 ## REST Services
 
