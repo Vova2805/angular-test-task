@@ -5,8 +5,8 @@
     angular.module('songList')
         .component('songList', {
             templateUrl: 'song-list/song-list.template.html',
-            controller: ['$scope', '$http',
-                function SongListController($scope, $http) {
+            controller: ['$scope', '$http', '$window', '$rootScope',
+                function SongListController($scope, $http, $window, $rootScope) {
 
                     var self = this;
                     self.songs = [];
@@ -22,7 +22,8 @@
                                 self.count = self.songs.length;
                             })
                             .catch(function (err) {
-                                console.log(err);
+                                console.log('err', err);
+                                alert('Update failed. Please try again');
                             });
                     };
 
@@ -31,9 +32,14 @@
                         $http.get('/albums/count')
                             .then(function (response) {
                                 self.initCount = response.data['value'];
+                                if (typeof $rootScope.lastId === 'undefined' || $rootScope.lastId === null) {
+                                    $rootScope.lastId = self.initCount;
+                                    console.log($rootScope.lastId);
+                                }
                             })
                             .catch(function (err) {
-                                console.log(err);
+                                console.log('err', err);
+                                alert('Update failed. Please try again');
                             });
                     };
 
@@ -51,6 +57,10 @@
                                 console.log(err);
                                 alert('failed');
                             });
+                    };
+
+                    $scope.addNew = function () {
+                        $window.location.href = '#!/songs/add/' + $rootScope.lastId;
                     };
 
                     updateList();

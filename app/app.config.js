@@ -10,8 +10,8 @@ angular.
         when('/songs', {
           template: '<song-list></song-list>'
         }).
-        when('/songs/:songId', {
-          template: '<song-detail></song-detail>'
+        when('/songs/:operation/:songId', {
+            template: '<song-detail></song-detail>'
         }).
         otherwise('/songs');
     }

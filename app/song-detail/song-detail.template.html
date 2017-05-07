@@ -41,20 +41,23 @@
 
             <div class="input-group">
                 <span class="input-group-addon">Price</span>
-                <input type="text" class="form-control" id="price" ng-model="$ctrl.song.price"
+                <input type="number" class="form-control" id="price" ng-model="$ctrl.song.price" step="0.1"
                        aria-describedby="basic-addon1">
             </div>
 
             <div class="input-group">
                 <span class="input-group-addon">Year</span>
-                <input type="text" class="form-control" id="year" ng-model="$ctrl.song.year"
+                <input type="number" class="form-control" id="year" ng-model="$ctrl.song.year"
                        aria-describedby="basic-addon1">
             </div>
         </div>
     </div>
 
     <div class="row">
-        <button type="button" ng-click="update($ctrl.song)" class="btn btn-primary">UPDATE</button>
+        <button type="button" ng-click="goBack()" class="btn left">Back</button>
+        <button type="button" ng-click="click($ctrl.song)" class="btn btn-primary">{{$ctrl.buttonTitle}}</button>
         <button type="button" ng-click="reset()" class="btn">Reset</button>
     </div>
+
 </div>
+

@@ -79,6 +79,7 @@ module.exports = function () {
 					};
 				}
 
+				_album.id = req.body.id;
 				_album.title = req.body.title;
 				_album.artist = req.body.artist;
 				_album.country = req.body.country;

@@ -30,7 +30,12 @@ nav {
 
 .border-right {
     border-right: 1px solid white;
-    padding-right: 16px;
+    padding-right: 5px;
+}
+
+.add-new {
+    margin: 10px;
+    color: white;
 }
 
 .bootstrap-select.btn-group:not(.input-group-btn), .bootstrap-select.btn-group[class*="span"] {
@@ -39,16 +44,17 @@ nav {
 
 .container-fluid.content {
     padding-top: 5% !important;
+}
 
-.card-link.danger.delete {
+.container-fluid.content .card-link.danger.delete {
     float: right !important;
 }
 
-.text-muted.ng-binding {
+.container-fluid.content .text-muted.ng-binding {
     float: right !important;
 }
 
-.card {
+.container-fluid.content .card {
     padding: 16px;
     border-radius: 5px;
     border: 1px solid;
@@ -58,10 +64,13 @@ nav {
     max-width: 100%;
 }
 
-}
-
 .container-fluid.details button {
     float: right;
+    margin: 16px;
+}
+
+.container-fluid.details button.left {
+    float: left!important;
     margin: 16px;
 }
 
